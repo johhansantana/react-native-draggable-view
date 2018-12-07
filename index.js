@@ -56,7 +56,7 @@ export default class component extends Component {
     var currentPosition = Math.abs(positionY / SCREEN_HEIGHT);
     var endPosition = isGoingToUp ? finalPosition + 0 : initialPositon + 0;
 
-    var position = new Animated.Value(positionY);
+    var position = new Animated.Value(isGoingToUp ? positionY - 50 : positionY);
     position.removeAllListeners();
 
     // console.log('configuration : '+endPosition)
