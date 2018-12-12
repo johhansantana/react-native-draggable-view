@@ -71,7 +71,8 @@ export default class component extends Component {
 
     // position.addListener((position) => { console.log('position by', position, endPosition); });
     position.addListener(position => {
-      this.props.positionYUpdate(position.value);
+      if (this.props.positionYUpdate)
+        this.props.positionYUpdate(position.value);
       if (!this.center) return;
       this.onUpdatePosition(position.value);
     });
@@ -100,7 +101,8 @@ export default class component extends Component {
         );
       },
       onPanResponderMove: (evt, gestureState) => {
-        this.props.positionYUpdate(gestureState.moveY);
+        if (this.props.positionYUpdate)
+          this.props.positionYUpdate(gestureState.moveY);
         this.moveDrawerView(gestureState);
       },
       onPanResponderRelease: (evt, gestureState) => {
